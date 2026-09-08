@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Task Management System</h1>
+            <p>Create, update and track your tasks easily</p>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <h3>Total Tasks</h3>
+                <p id="totalTasks">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Pending</h3>
+                <p id="pendingTasks">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>In Progress</h3>
+                <p id="progressTasks">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Completed</h3>
+                <p id="completedTasks">0</p>
+            </div>
+
+        </section>
+
+
+        <!-- Progress -->
+        <section class="progress-section">
+
+            <div class="progress-header">
+                <h2>Overall Progress</h2>
+                <span id="progressText">0%</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+        </section>
+
+
+        <!-- Add Task -->
+        <section class="task-form-section">
+
+            <h2 id="formTitle">Add New Task</h2>
+
+            <form id="taskForm">
+
+                <div class="form-group">
+                    <label>Task Title</label>
+
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        placeholder="Enter task title"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Description</label>
+
+                    <textarea
+                        id="taskDescription"
+                        placeholder="Enter task description"
+                    ></textarea>
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Due Date</label>
+
+                        <input
+                            type="date"
+                            id="taskDate"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Priority</label>
+
+                        <select id="taskPriority">
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                            <option value="Medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Category</label>
+
+                        <select id="taskCategory">
+
+                            <option value="Personal">
+                                Personal
+                            </option>
+
+                            <option value="College">
+                                College
+                            </option>
+
+                            <option value="Work">
+                                Work
+                            </option>
+
+                            <option value="Project">
+                                Project
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="button-group">
+
+                    <button
+                        type="submit"
+                        class="add-btn"
+                        id="submitButton"
+                    >
+                        Add Task
+                    </button>
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        id="cancelButton"
+                        onclick="cancelEdit()"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- Search and Filter -->
+        <section class="filter-section">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search tasks..."
+                onkeyup="displayTasks()"
+            >
+
+
+            <select
+                id="statusFilter"
+                onchange="displayTasks()"
+            >
+
+                <option value="All">
+                    All Tasks
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+
+            <select
+                id="priorityFilter"
+                onchange="displayTasks()"
+            >
+
+                <option value="All">
+                    All Priorities
+                </option>
+
+                <option value="High">
+                    High
+                </option>
+
+                <option value="Medium">
+                    Medium
+                </option>
+
+                <option value="Low">
+                    Low
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- Task List -->
+        <section class="task-section">
+
+            <div class="task-header">
+
+                <h2>My Tasks</h2>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearAllTasks()"
+                >
+                    Clear All
+                </button>
+
+            </div>
+
+
+            <div id="taskList">
+
+                <!-- Tasks will appear here -->
+
+            </div>
+
+
+            <div
+                id="emptyMessage"
+                class="empty-message"
+            >
+                <h3>No tasks found</h3>
+                <p>Add a new task to get started.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Task Management System © 2026
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
